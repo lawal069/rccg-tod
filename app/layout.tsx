@@ -36,6 +36,7 @@ export default function RootLayout({
         className={`${satoshi.className} font-sans`}
         suppressHydrationWarning={true}
       >
+        {/* Check for layout page */}
         <Navbar />
         <main className="min-h-screen">{children}</main>
         <Footer />
