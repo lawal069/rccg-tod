@@ -8,9 +8,9 @@ const Footer = () => {
       <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center mb-0 lg:mb-16 w-full ">
         <div>
           <Image
-            src={"/whitelogo.svg"}
-            width={180}
-            height={57}
+            src={"/logo.svg"}
+            width={50}
+            height={50}
             alt="Leoburnett"
           />
         </div>
