@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
+import { Button } from "./ui/button";
 
 // import CloseIcon from "./CloseIcon";
 // import OpenIcon from "./OpenIcon";
@@ -21,7 +22,7 @@ const Navbar = () => {
 
   return (
     <nav className="w-full border-b">
-      <div className="flex items-center justify-between max-w-screen-xxl lg:px-16 px-6 py-5 w-full mx-auto bg-white lg:relative">
+      <div className="flex items-center justify-between max-w-screen-xxl lg:px-16 px-6 py-4 w-full mx-auto bg-white lg:relative">
         {/* logo */}
         <div className="lg:w-fit w-full z-30 flex items-center justify-between lg:border-none lg:pb-0">
           <Link
@@ -32,13 +33,11 @@ const Navbar = () => {
           >
             <Image
               alt="alt Image"
-              width={200}
-              height={34.57}
+              width={50}
+              height={50}
               src={"/logo.svg"}
               className=""
             />
-
-            <p className="text-sm font-semibold mt-0 text-black">LAGOS</p>
           </Link>
 
           {/* hamburger menu */}
@@ -59,6 +58,7 @@ const Navbar = () => {
               </Link>
             ))}
           </ul>
+          <Button className="bg-btn-color hover:bg-btn-color">Give Online</Button>
         </div>
 
         {/* mobile-menu */}
@@ -80,6 +80,7 @@ const Navbar = () => {
                 {link.name}
               </Link>
             ))}
+            <Button className="bg-btn-color hover:bg-btn-color">Give Online</Button>
           </div>
         </ul>
       </div>
@@ -89,23 +90,23 @@ const Navbar = () => {
 
 const navLinks = [
   {
-    name: "Works",
-    url: "our-works",
-  },
-  {
-    name: "Why us",
-    url: "why-us",
-  },
-  {
-    name: "What we do",
+    name: "About Us",
     url: "about-us",
   },
   {
-    name: "Insights",
-    url: "insights",
+    name: "Ministries",
+    url: "ministries",
   },
   {
-    name: "Contact us",
+    name: "Events",
+    url: "events",
+  },
+  {
+    name: "Media",
+    url: "media",
+  },
+  {
+    name: "Contact",
     url: "contact-us",
   },
 ];
