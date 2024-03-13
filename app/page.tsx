@@ -1,10 +1,12 @@
-import Image from "next/image";
+import HomePage from "@/components/HomePage";
+import VideoBackground from "@/components/VideoBackground";
 
 export default function Home() {
   return (
     <div className="w-full mx-auto">
-      <h1 className="text-7xl">Hello World</h1>
-      <h1 className="text-7xl font-bold">Hello World</h1>
+      <VideoBackground />
+
+      <HomePage />
     </div>
   );
 }
