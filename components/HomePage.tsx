@@ -1,19 +1,16 @@
 import React from "react";
-import { Button } from "./ui/button";
+import { Events, Services, Connects } from "@/data/homeData";
 import Link from "next/link";
 
-import {
-  Card,
-} from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import Image from "next/image";
-import { connect } from "http2";
-import PastorCard from "./PastorCard";
+import PastorWrapper from "./PastorWrapper";
 
 const HomePage = () => {
   return (
     <div className="max-w-screen-xxl w-full mx-auto">
       {/* Welcome Section */}
-      <section className="w-full bg-white px-6 lg:px-12 py-12 lg:py-20 flex flex-col lg:flex-row lg:justify-center items-center gap-10">
+      <section className="w-full bg-white px-6 lg:px-12 py-20 lg:py-40 flex flex-col lg:flex-row lg:justify-center items-center gap-10">
         <div className="w-[300px] lg:w-[400px] h-[320px] lg:h-[440px] bg-gray-800 rounded-2xl"></div>
         <div className="w-full lg:w-3/5">
           <div className="text-custom-black">
@@ -34,7 +31,7 @@ const HomePage = () => {
             <h3 className="text-lg lg:text-3xl font-semibold">
               Pastor Akinyemi
             </h3>
-            <Link href="/" className="hover:text-btn-color underline">
+            <Link href="/about-us" className="hover:text-btn-color underline">
               <p className="text-sm lg:text-xl">Learn more About us</p>
             </Link>
           </div>
@@ -42,7 +39,7 @@ const HomePage = () => {
       </section>
 
       {/* Upcoming Events */}
-      <section className="w-full bg-[url('/home/grass.svg')] px-6 lg:px-12 py-12 lg:py-20 flex flex-col lg:flex-row lg:justify-center items-center gap-10">
+      <section className="w-full bg-[url('/home/grass.svg')] px-6 lg:px-12 py-20 lg:py-40 flex flex-col lg:flex-row lg:justify-center items-center gap-10">
         <div className="flex flex-col space-y-6 lg:space-y-14 justify-center items-center">
           <h3 className="font-bold uppercase text-2xl lg:text-4xl border-l-4 px-2 border-primary-color">
             Upcoming Events
@@ -81,17 +78,12 @@ const HomePage = () => {
       </section>
 
       {/* Meet Our Pastors */}
-      <section className="w-full bg-[url('/home/graybg.svg')] px-6 lg:px-12 py-12 lg:py-20 flex flex-col lg:flex-row lg:justify-center items-center gap-10">
-        <div className="flex flex-col text-custom-black justify-center items-center w-full gap-10">
-          <h3 className="font-bold uppercase text-2xl lg:text-4xl border-l-4 px-2 border-primary-color">
-            our pastors
-          </h3>
-          <PastorCard />
-        </div>
+      <section className="w-full bg-[url('/home/graybg.svg')]">
+        <PastorWrapper />
       </section>
 
       {/* Services Time */}
-      <section className="w-full bg-light-gray px-6 lg:px-12 py-12 lg:py-20 flex flex-col lg:flex-row lg:justify-center items-center gap-10">
+      <section className="w-full bg-light-gray px-6 lg:px-12 py-20 lg:py-40 flex flex-col lg:flex-row lg:justify-center items-center gap-10">
         <div className="flex flex-col space-y-6 lg:space-y-14 justify-center items-center">
           <h3 className="font-bold uppercase text-2xl lg:text-4xl border-l-4 px-2 border-primary-color">
             services time
@@ -128,7 +120,7 @@ const HomePage = () => {
       </section>
 
       {/* Connect, Grow & Trive */}
-      <section className="w-full bg-[url('/home/grass.svg')] px-6 lg:px-12 py-12 lg:py-20 flex flex-col lg:justify-center items-center gap-10">
+      <section className="w-full bg-[url('/home/grass.svg')] px-6 lg:px-12 py-20 lg:py-40 flex flex-col lg:justify-center items-center gap-10">
         <div className="flex flex-col text-light-gray justify-center items-center w-full lg:w-[700px] gap-4">
           <h3 className="font-bold uppercase text-2xl lg:text-4xl ">
             connect, grow & thrive
@@ -168,11 +160,12 @@ const HomePage = () => {
       </section>
 
       {/* Contact Us */}
-      <section className="w-full bg-white px-6 lg:px-12 py-12 lg:py-20 flex flex-col lg:flex-row lg:justify-center items-center gap-10">
+      <section className="w-full bg-light-gray px-6 lg:px-12 py-20 lg:py-40 flex flex-col lg:flex-row lg:justify-center items-center gap-10">
         <div className="flex flex-col text-custom-black justify-center items-center w-full lg:w-[700px] gap-4">
-          <h3 className="font-bold uppercase text-2xl lg:text-4xl ">
+          <h3 className="font-bold uppercase text-2xl lg:text-5xl ">
             get in touch
           </h3>
+          <p className="font-bold uppercase text-base lg:text-lg" >We'd love to hear from you</p>
         </div>
       </section>
     </div>
@@ -180,96 +173,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
-const Services = [
-  {
-    logo: "/home/hand.svg",
-    service: "celebration service",
-    day: "first sundays",
-    time: "10:00am",
-  },
-  {
-    logo: "/home/church.svg",
-    service: "adult service",
-    day: " second & last sundays",
-    time: "10:00am",
-  },
-  {
-    logo: "/home/fire.svg",
-    service: "yaya service",
-    day: "third sundays",
-    time: "10:00am",
-  },
-  {
-    logo: "/home/pray.svg",
-    service: "digging deep",
-    day: "third sundays",
-    time: "10:00am",
-  },
-  {
-    logo: "/home/love.svg",
-    service: "faith clinic",
-    day: "third sundays",
-    time: "10:00am",
-  },
-];
-const Connects = [
-  {
-    link: "",
-    img: "",
-    name: "young adults",
-  },
-  {
-    link: "",
-    img: "",
-    name: "teenagers",
-  },
-  {
-    link: "",
-    img: "",
-    name: "workers",
-  },
-  {
-    link: "",
-    img: "",
-    name: "fellowhship",
-  },
-];
-const Events = [
-  {
-    eventImage: "/img5.svg",
-    eventName: "praise 24",
-    eventDate: "10 november, 2024",
-    eventTime: "9am - 9pm",
-  },
-  {
-    eventImage: "/img5.svg",
-    eventName: "mother's day",
-    eventDate: "11 april, 2024",
-    eventTime: "10am",
-  },
-  {
-    eventImage: "/img5.svg",
-    eventName: "father's day",
-    eventDate: "11 april, 2024",
-    eventTime: "10am",
-  },
-  {
-    eventImage: "/img5.svg",
-    eventName: "children's day",
-    eventDate: "27 december, 2024",
-    eventTime: "10am",
-  },
-  {
-    eventImage: "/img5.svg",
-    eventName: "easter",
-    eventDate: "11 april, 2024",
-    eventTime: "10am",
-  },
-  {
-    eventImage: "/img5.svg",
-    eventName: "christmas",
-    eventDate: "11 april, 2024",
-    eventTime: "10am",
-  },
-];

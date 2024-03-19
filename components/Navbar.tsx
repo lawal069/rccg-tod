@@ -2,14 +2,33 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { Button } from "./ui/button";
 
-// import CloseIcon from "./CloseIcon";
-// import OpenIcon from "./OpenIcon";
-
 const Navbar = () => {
+  const pathname = usePathname();
+
   const [open, setOpen] = useState(false);
+  const [scrollBg, setScrollBg] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollHeight = window.scrollY;
+
+      if (scrollHeight > 90) {
+        setScrollBg(true);
+      } else {
+        setScrollBg(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const toggleMobileMenu = () => {
     setOpen(!open);
@@ -20,9 +39,19 @@ const Navbar = () => {
     }
   };
 
+  const reservedPathname = pathname === "/";
+
   return (
-    <nav className="w-full border-b">
-      <div className="flex items-center justify-between max-w-screen-xxl lg:px-16 px-6 py-4 w-full mx-auto bg-white lg:relative">
+    <nav
+    className={`w-full fixed z-30 ${
+      scrollBg
+        ? "bg-white text-black"
+        : reservedPathname && !scrollBg
+        ? "bg-transparent text-white"
+        : "bg-white text-black"
+    }  ${open ? "h-screen" : ""}`}
+    >
+      <div className="flex items-center justify-between max-w-screen-xxl lg:px-16 px-6 py-4 w-full mx-auto lg:relative">
         {/* logo */}
         <div className="lg:w-fit w-full z-30 flex items-center justify-between lg:border-none lg:pb-0">
           <Link
@@ -50,15 +79,18 @@ const Navbar = () => {
           </div>
         </div>
 
+        {/* large devices */}
         <div className="lg:flex hidden items-center justify-between gap-[66px]">
           <ul className="flex gap-[48px]">
             {navLinks.map((link, index) => (
-              <Link key={index} href={link.url} className="text-black">
+              <Link key={index} href={link.url} className="hover:underline-offset-8 hover:underline hover:text-btn-color">
                 <li>{link.name}</li>
               </Link>
             ))}
           </ul>
-          <Button className="bg-btn-color hover:bg-btn-color">Give Online</Button>
+          <Button asChild className="bg-btn-color hover:bg-btn-color">
+            <Link href={"/"}>Give Online</Link>
+          </Button>
         </div>
 
         {/* mobile-menu */}
@@ -80,7 +112,9 @@ const Navbar = () => {
                 {link.name}
               </Link>
             ))}
-            <Button className="bg-btn-color hover:bg-btn-color">Give Online</Button>
+            <Button className="bg-btn-color hover:bg-btn-color">
+              Give Online
+            </Button>
           </div>
         </ul>
       </div>
