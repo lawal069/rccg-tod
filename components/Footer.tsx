@@ -4,53 +4,36 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className=" h-auto w-full flex lg:flex-col justify-between gap-10 items-start bg-black text-white px-4 lg:px-20 py-6 lg:py-10">
-      <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center mb-0 lg:mb-16 w-full ">
-        <div>
-          <Image
-            src={"/logo.svg"}
-            width={50}
-            height={50}
-            alt="Leoburnett"
-          />
-        </div>
-        <div className="flex flex-col lg:flex-row gap-4 lg:gap-[30px]">
-          {footerLinks.map((link, index) => (
-            <li key={index} className="list-none">
-              <Link href={link.link}>{link.name}</Link>
-            </li>
-          ))}
-        </div>
-        <div className="flex gap-2 lg:gap-[14px] ">
-          {footerImages.map((image, index) => (
-            <Image
-              key={index}
-              alt={""}
-              width={image.width}
-              height={image.height}
-              src={image.src}
-              className="bg-black"
-            />
-          ))}
+    <footer className="w-full mx-auto flex flex-col justify-center items-center gap-4 lg:gap-6 bg-white text-black px-4 lg:px-20 py-6 lg:py-10">
+      <div className="w-full flex justify-center items-center gap-4">
+        <Link href={"/"} className="relative w-[50px] lg:w-[80px] h-[50px] lg:h-[80px]">
+          <Image src={"/logo.svg"} fill alt="rccg" className="absolute w-auto object-cover" />
+        </Link>
+        <div className="flex flex-col uppercase font-bold">
+          <h1 className="text-lg lg:text-2xl">RCCG Tabernacle of David</h1>
+          <p className="text-sm font-medium italic">
+            The place of His presence
+          </p>
         </div>
       </div>
-      <hr className=" hidden lg:block lg:border lg:border-white w-full" />
-      <div className="flex flex-col lg:flex-row lg:justify-between mt-[50px] items-center w-full">
-        <div className="flex gap-[30px] flex-col lg:flex-row ">
-          <Link href={""} className="flex gap-2 items-center">
-            <Image src={"/mail.svg"} width={20} height={20} alt="facebook" />
-            <p>hello@Leoburnett.com</p>
+      <div className="flex gap-2 lg:gap-[14px]">
+        {footerImages.map((image, index) => (
+          <Link
+            href={image.socialUrl}
+            key={index}
+            className="w-[30px] lg:w-[40px] h-[30px] lg:h-[40px] relative hover:scale-105"
+          >
+            <Image
+              fill
+              alt={""}
+              src={image.src}
+              className="absolute object-cover w-auto"
+            />
           </Link>
-          <Link href={""} className="flex gap-2 items-center">
-            <Image src={"/call.svg"} width={20} height={20} alt="facebook" />
-            <p>+91 91813 23 2309</p>
-          </Link>
-          <Link href={""} className="flex gap-2 items-center">
-            <Image src={"/location.svg"} width={20} height={20} alt="facebook" />
-            <p>Somewhere in the World</p>
-          </Link>
-        </div>
-        <div className="">© 2024 Leoburnett. All rights reserved.</div>
+        ))}
+      </div>
+      <div className="">
+        © 2024 RCCG Tabernacle of David.
       </div>
     </footer>
   );
@@ -89,22 +72,24 @@ const footerLinks = [
 
 const footerImages = [
   {
-    src: "/footerImages/facebook.svg",
+    src: "/facebook.svg",
     alt: "facebook",
-    width: 44,
-    height: 44,
+    socialUrl: "facebook.com/tabofdav",
   },
   {
-    src: "/footerImages/twitter.svg",
-    alt: "twitter",
-    width: 44,
-    height: 44,
+    src: "/x.svg",
+    alt: "x",
+    socialUrl: "twitter.com/tabofdav",
   },
   {
-    src: "/footerImages/linkedln.svg",
-    alt: "linkedln",
-    width: 44,
-    height: 44,
+    src: "/instagram.svg",
+    alt: "instagram",
+    socialUrl: "instagram.com/tabofdav",
+  },
+  {
+    src: "/youtube.svg",
+    alt: "youtube",
+    socialUrl: "https://www.youtube.com/@tabofdav",
   },
 ];
 
