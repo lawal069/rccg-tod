@@ -1,8 +1,14 @@
+import AboutUsPage from '@/components/AboutUsPage'
+import VideoBackground from '@/components/VideoBackground'
 import React from 'react'
 
 const page = () => {
   return (
-    <div className="bg-red-900 h-screen w-full">about us</div>
+    <div className="max-w-screen-xxl mx-auto w-full">
+      <VideoBackground />
+
+      <AboutUsPage />
+    </div>
   )
 }
 
