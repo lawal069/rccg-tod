@@ -32,6 +32,9 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      screens:{
+        xxl: "1440px",
+      },
       colors:{
         "btn-color":"#66A43E",
         "primary-color":"#50A1DC",
