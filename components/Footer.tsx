@@ -70,7 +70,7 @@ const footerLinks = [
   },
 ];
 
-const footerImages = [
+export const footerImages = [
   {
     src: "/facebook.svg",
     alt: "facebook",

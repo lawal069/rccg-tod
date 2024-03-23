@@ -1,36 +1,114 @@
-import React from "react";
-import { Events, Services, Connects } from "@/data/homeData";
+"use client";
+import React, { useRef, useEffect } from "react";
 import Link from "next/link";
-
-import { Card } from "@/components/ui/card";
 import Image from "next/image";
+import { Card } from "@/components/ui/card";
+import Typewriter from "typewriter-effect";
+
+import { Events, Services, Connects } from "@/data/homeData";
 import PastorWrapper from "./PastorWrapper";
 import ContactPage from "./ContactPage";
 import ServicesComponent from "./ServicesComponent";
+import { motion, useAnimation, useInView } from "framer-motion";
+
+const staggeredTexts = {
+  hidden: {
+    opacity: 0,
+    y: 50,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    ease: "linear",
+    transition: {
+      duration: 0.1,
+      type: "spring",
+      damping: 17,
+      mass: 2,
+    },
+  },
+};
+
+const containerVariants = {
+  hidden: {
+    opacity: 0,
+    y: 100,
+  },
+
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      when: "beforeChildren",
+      staggerChildren: 0.5,
+    },
+  },
+};
 
 const HomePage = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
+  const mainControls = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      mainControls.start("visible");
+    }
+  }, [isInView]);
+
   return (
-    <div className="max-w-screen-xxl w-full mx-auto">
+    <motion.div
+      ref={ref}
+      variants={containerVariants}
+      initial="hidden"
+      animate={mainControls}
+      className="max-w-screen-xxl w-full mx-auto"
+    >
       {/* Welcome Section */}
-      <section className="w-full bg-white px-6 lg:px-12 py-20 lg:py-40 flex flex-col lg:flex-row lg:justify-center items-center gap-10">
-        <div className="w-[300px] lg:w-[400px] h-[320px] lg:h-[440px] bg-gray-800 rounded-2xl"></div>
+      <div className="w-full bg-white px-6 lg:px-12 py-20 lg:py-40 flex flex-col lg:flex-row lg:justify-center items-center gap-10">
+        <motion.div
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ type: "tween", duration: 0.5 }}
+          className="w-[300px] lg:w-[400px] h-[320px] lg:h-[440px] bg-gray-800 rounded-2xl"
+        ></motion.div>
+
         <div className="w-full lg:w-3/5">
           <div className="text-custom-black">
-            <h1 className="font-bold text-4xl lg:text-7xl pb-2 lg:pb-6 text-center lg:text-left">
-              Welcome To Tabernacle of David
-            </h1>
-            <h3 className="font-semibold text-base lg:text-2xl">
-              The Place of His Presence
-            </h3>
-            <p className="py-6 text-secondary-black text-xs lg:text-xl leading-5 lg:leading-8">
+            <motion.div
+              variants={staggeredTexts}
+              className="font-bold text-3xl lg:text-7xl pb-2 lg:pb-6 text-center lg:text-left"
+            >
+              Welcome to <span className="text-btn-color">RCCG</span> Tabernacle
+              of David
+            </motion.div>
+
+            <motion.div
+              variants={staggeredTexts}
+              className="font-semibold text-base lg:text-2xl text-primary-color"
+            >
+              <Typewriter
+                options={{
+                  strings: ["The Place of His Presence"],
+                  autoStart: true,
+                  loop: true,
+                }}
+              />
+            </motion.div>
+            <motion.div
+              variants={staggeredTexts}
+              className="py-6 text-secondary-black text-xs lg:text-xl leading-5 lg:leading-8"
+            >
               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
               Corrupti, corporis? Est dicta inventore amet dignissimos ipsam ut
               voluptatibus ullam aut in, tenetur veritatis impedit enim
               laboriosam ipsum cum optio fugit.
-            </p>
+            </motion.div>
           </div>
           <div className="flex flex-col space-y-2">
-            <h3 className="text-lg lg:text-3xl font-semibold">
+            <h3 className="text-lg lg:text-3xl font-semibold text-primary-color">
               Pastor Akinyemi
             </h3>
             <Link href="/about-us" className="hover:text-btn-color underline">
@@ -38,7 +116,7 @@ const HomePage = () => {
             </Link>
           </div>
         </div>
-      </section>
+      </div>
 
       {/* Upcoming Events */}
       <section className="w-full bg-[url('/home/grass.svg')] px-6 lg:px-12 py-20 lg:py-40 flex flex-col lg:flex-row lg:justify-center items-center gap-10">
@@ -135,13 +213,15 @@ const HomePage = () => {
           <h3 className="font-bold uppercase text-2xl lg:text-5xl ">
             get in touch
           </h3>
-          <p className="font-bold uppercase text-base lg:text-lg" >We'd love to hear from you</p>
+          <p className="font-bold uppercase text-base lg:text-lg">
+            We'd love to hear from you
+          </p>
           <div className="w-full">
             <ContactPage />
           </div>
         </div>
       </section>
-    </div>
+    </motion.div>
   );
 };
 
