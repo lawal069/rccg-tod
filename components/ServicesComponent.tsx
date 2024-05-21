@@ -8,7 +8,7 @@ const ServicesComponent = () => {
     <section className="w-full bg-light-gray flex flex-col lg:flex-row lg:justify-center items-center gap-10 px-6 lg:px-20 py-20 lg:py-40">
       <div className="flex flex-col space-y-6 lg:space-y-14 justify-center items-center">
         <h3 className="font-bold uppercase text-2xl lg:text-4xl border-l-4 px-2 border-primary-color">
-          our services
+          services time
         </h3>
         <div className="flex flex-wrap gap-8 justify-center items-center">
           {Services.map((service, index) => (

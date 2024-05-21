@@ -29,7 +29,7 @@ const AboutUsPage = () => {
           <div className="w-[300px] lg:w-[400px] h-[320px] lg:h-[440px] bg-gray-800 rounded-full"></div>
           <div className="w-full lg:w-[600px] text-custom-black ">
             <h1 className="font-bold text-3xl lg:text-5xl">Olumide Akinyemi</h1>
-            <h3 className="font-semibold text-base lg:text-2xl">Area Pastor</h3>
+            <h3 className="font-semibold text-base lg:text-2xl text-btn-color">Area Pastor</h3>
             <p className="py-6 text-secondary-black text-xs lg:text-xl text-center lg:text-left leading-5 lg:leading-8">
               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
               Corrupti, corporis? Est dicta inventore amet dignissimos ipsam ut
