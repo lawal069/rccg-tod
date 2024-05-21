@@ -32,24 +32,27 @@ const Navbar = () => {
 
   const toggleMobileMenu = () => {
     setOpen(!open);
-    if (!open) {
+  };
+
+  useEffect(() => {
+    if (open) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
     }
-  };
+  }, [open]);
 
   const reservedPathname = pathname === "/";
 
   return (
     <nav
-    className={`w-full fixed z-30 ${
-      scrollBg
-        ? "bg-white text-black"
-        : reservedPathname && !scrollBg
-        ? "bg-transparent text-white"
-        : "bg-white text-black"
-    }  ${open ? "h-screen" : ""}`}
+      className={`w-full fixed z-30 ${
+        scrollBg
+          ? "bg-white text-black"
+          : reservedPathname && !scrollBg
+          ? "bg-transparent text-white"
+          : "bg-white text-black"
+      }  ${open ? "h-screen" : ""}`}
     >
       <div className="flex items-center justify-between max-w-screen-xxl lg:px-16 px-6 py-4 w-full mx-auto lg:relative">
         {/* logo */}
@@ -83,7 +86,11 @@ const Navbar = () => {
         <div className="lg:flex hidden items-center justify-between gap-[66px]">
           <ul className="flex gap-[48px]">
             {navLinks.map((link, index) => (
-              <Link key={index} href={link.url} className="hover:underline-offset-8 hover:underline hover:text-btn-color">
+              <Link
+                key={index}
+                href={link.url}
+                className="hover:underline-offset-8 hover:underline hover:text-btn-color"
+              >
                 <li>{link.name}</li>
               </Link>
             ))}
