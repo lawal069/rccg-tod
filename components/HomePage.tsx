@@ -67,7 +67,7 @@ const HomePage = () => {
       className="max-w-screen-xxl w-full mx-auto"
     >
       {/* Welcome Section */}
-      <div className="w-full bg-white px-6 lg:px-12 py-20 lg:py-40 flex flex-col lg:flex-row lg:justify-center items-center gap-10">
+      <div className="w-full bg-white px-6 lg:px-16 py-20 lg:py-40 flex flex-col lg:flex-row lg:justify-center items-center gap-10">
         <motion.div
           initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0 }}

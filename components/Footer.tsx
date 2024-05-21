@@ -10,8 +10,8 @@ const Footer = () => {
           <Image src={"/logo.svg"} fill alt="rccg" className="absolute w-auto object-cover" />
         </Link>
         <div className="flex flex-col uppercase font-bold">
-          <h1 className="text-lg lg:text-2xl">RCCG Tabernacle of David</h1>
-          <p className="text-sm font-medium italic">
+          <h1 className="text-lg lg:text-2xl text-btn-color">RCCG Tabernacle of David</h1>
+          <p className="text-sm font-medium italic text-primary-color">
             The place of His presence
           </p>
         </div>
